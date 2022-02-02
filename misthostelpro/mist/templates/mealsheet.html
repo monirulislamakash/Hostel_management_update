@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+    <!--<div class="searce">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form method="POST" action="{% url 'mealsearch' %}" class="d-flex">
+                {% csrf_token %}
+                <input name="findman" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+    <###################>
+            <form method="POST" action="{% url 'hostelmealsearch' %}" class="d-flex ms-auto">
+                {% csrf_token %}
+                <select name="searchhost" class="form-select" aria-label="Default select example">
+                    <option selected>Select Hostel</option>
+                    <option value="1">Hostel No:1</option>
+                    <option value="2">Hostel No:2</option>
+                    <option value="3">Hostel No:3</option>
+                    <option value="4">Hostel No:4</option>
+                    <option value="5">Hostel No:5</option>
+                    <option value="6">Hostel No:6</option>
+                    <option value="7">Hostel No:7</option>
+                </select>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+        </nav>
+    </div>-->
+    <div id="tblCustomers">
+    <table class="tablemobilewidth table table-dark table-striped container mt-3" id="tbl_exporttable_to_xls">
+            <h4 align="center">Mangrove Institute Of Science and Technology</h4>
+            <h4 align="center">Hostel NO:{{hostelNo}}</h4>
+            <thead>
+                <tr>
+                    <th scope="col">SL</th>
+                    <th scope="col">Room</th>
+                    <th scope="col">Name OF STUDET</th>
+                    <th scope="col">Roll NO</th>
+                    <th scope="col">Qn</th>
+                    <th scope="col">breakfist</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Qn</th>
+                    <th scope="col">Lunch</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Qn</th>
+                    <th scope="col">Diner</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sortorder %}
+                <tr>
+                   <td>{{i.id}}</td>
+                   <td>{{i.Room_Number}}</td>
+                   <td>{{i.Name}}</td>
+                   <td>{{i.Roll}}</td>
+                   <td>{{i.Break_qun}}</td>
+                   <td>{{i.Break}}</td>
+                   <td>{{i.Break_price}}</td>
+                   <td>{{i.Lunch_qun}}</td>
+                   <td>{{i.Lunch}}</td>
+                   <td>{{i.Lunch_price}}</td>
+                   <td>{{i.Denar_qun}}</td>
+                   <td>{{i.Denar}}</td>
+                   <td>{{i.Denar_price}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+    </div>
+    <div align="center">
+    <input class="btn btn-success" type="button" id="btnExport" value="Export TO PDF" onclick="Export()" />
+    <button class="btn btn-success" onclick="ExportToExcel('xlsx')">Export TO Excel</button>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript">
+        function Export() {
+            html2canvas(document.getElementById('tblCustomers'), {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("Table.pdf");
+                }
+            });
+        }
+    </script>
+    
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script>
+    function ExportToExcel(type, fn, dl) {
+       var elt = document.getElementById('tbl_exporttable_to_xls');
+       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+       return dl ?
+         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+         XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+    }
+    </script>
+{% endblock  %}

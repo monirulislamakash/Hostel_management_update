@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+    <div class="container col-lg-5 mt-3 pb-3 fcolor">
+
+        {% if succes %}
+            <div class="alert alert-success" role="alert">
+                {{succes}}
+            </div>
+        {% endif %}
+
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="color:#fff; background:#066706;"> 
+                Change Password
+            </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <form method="POST">
+                {% csrf_token %}
+                    <div class="mb-3">
+                        <input name="password" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the New Password">
+                    </div>
+                    <div class="d-grid gap-2" >
+                        <button type="submit" class="btn btn-success" style="display:block; margin:0 auto;">Change Password</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock  %}

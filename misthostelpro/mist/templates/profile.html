@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+
+	{% if error %}
+		<div class="alert alert-success alert-dismissible fade show container" role="alert">
+		<strong>{{error}}</strong> Thank You!
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	{% endif %}
+<div class="container profile col-lg-8" align="center">
+	<h1>Profile</h1><hr>
+	<a href="{{request.user.Image.url}}"><img class="profile_Pic" src="{{request.user.Image.url}}" width="300"></a>
+	<h4>{{request.user.first_name}} {{request.user.last_name}}</h4><br>
+    <table>
+        <tr>
+            <td><h6 class="num">Acount Blance : </h6></td>
+            <td> {{request.user.MealBill}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Number : </h6></td>
+            <td> {{request.user.Numer}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Room Number : </h6></td>
+            <td>{{request.user.Room_Number}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Father name : </h6></td>
+            <td>{{request.user.Father_name}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Class Roll : </h6></td>
+            <td>{{request.user.Class_Roll}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Bed Number : </h6></td>
+            <td>{{request.user.Bed_Number}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Blord Group : </h6></td>
+            <td>{{request.user.Blord_Group}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Address : </h6></td>
+            <td>{{request.user.Address}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Parents Number : </h6></td>
+            <td>{{request.user.Parents_number}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Date of Barth : </h6></td>
+            <td>{{request.user.Date_of_Barth}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Gender : </h6></td>
+            <td>{{request.user.Gender}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Emediate_Gauedion_Numer : </h6></td>
+            <td>{{request.user.Emediate_Gauedion_Numer}}</td>
+        </tr>
+    </table>
+    <a href="{% url 'updateprofile' %}"><button type="button" class="btn btn-outline-success ms-auto">Edit</button></a>
+</div>
+{% endblock  %}

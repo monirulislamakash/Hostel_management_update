@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+<div class="container">
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="#"></a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			  
+			</ul>
+			<form class="d-flex" method="POST" action="{% url 'Alluser' %}">
+				{% csrf_token %}
+			  <input class="form-control me-2" name="username" type="search" placeholder="Search" aria-label="Search">
+			  <button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
+		  </div>
+		</div>
+	  </nav>
+
+
+
+	<table class="table table-primary table-hover mt-3">
+		<thead>
+		  <tr>
+			<th scope="col">Name</th>
+			<th scope="col">User Nmae</th>
+			<th scope="col">Roll</th>
+			<th scope="col">hostell</th>
+			<th scope="col">Room</th>
+			<th scope="col">Action</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<td>{{prmition.StudentName}}</td>
+			<td>{{prmition.username}}</td>
+			<td>{{prmition.Class_Roll}}</td>
+			<td>{{prmition.Hostel}}</td>
+			<td>{{prmition.Room_Number}}</td>
+			<td>
+				<a href="{% url 'studentlist' prmition.id %}">
+					Details
+				</a>
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+</div>
+{% endblock  %}

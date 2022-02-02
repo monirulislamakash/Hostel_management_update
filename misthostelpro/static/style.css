@@ -1,0 +1,103 @@
+.Dashbord{
+	width:30%;
+	height: 100vh;
+	display:inline-block;
+	float: left;
+}
+.mul_meal{
+	width:30%;
+	height: 100vh;
+	display:inline-block;
+	float: right;
+}
+.profile_Pic{
+	width: 200px;
+	height: 200px;
+	border-radius:50%;
+	margin:0 auto;
+	display: block;
+	border: green 5px solid;
+}
+.notice{
+	width:100%;
+	height: 40px;
+	color:#fff;
+	line-height:40px;
+	background:green;
+	direction: left;
+}
+.menu{
+	background-color: #066706 !important;
+	color:#fff !important;
+}
+.dashtable{
+	display: block;
+	margin:0 auto;
+	width: 400px;
+	text-align: center;
+}
+.todaymeal{
+	width:38%;
+	height: 100vh;
+	display:inline-block;
+}
+.confirminput{
+	display:none;
+}
+.Profile_def{
+	display: none !important;
+}
+.login{
+	border:#ebebeb solid 0.1px;
+}
+.mealtable{
+	width: 100%;
+}
+@media only screen and (max-width:768px){
+	.Dashbord{
+		width:100%;
+		height: auto;
+	}
+	.dashtable{
+		width: auto;
+		display: block;
+		margin:0 auto;
+	}
+	.desh_pro_pc{
+		display:none;
+	}
+	.Profile_def{
+		display: block !important;
+		text-align: center !important;
+		background-color: #066706 !important;
+	}
+	.Profile_def:focus{
+		outline: none;
+	}
+	.mul_meal{
+		width:100%;
+		height:auto;
+		display: block;
+		margin: 0 auto;
+	}
+	.todaymeal{
+		width:100%;
+		height: auto;
+	}
+	.mel_head{
+		margin-top: 0px;
+		margin-bottom:0px;
+		height: auto;
+		padding:0px;
+		padding:5px;
+	}
+	.tablemobilewidth{
+		width: 100%;
+	}
+	.login{
+		border:none;
+	}
+	.mealtable{
+		width: 100%;
+	}
+}

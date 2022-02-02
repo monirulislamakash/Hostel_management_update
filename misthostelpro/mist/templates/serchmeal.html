@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+    <div class="container mt-3">
+    <h3 align="center">Total:{{countsiam}}</h3>
+        <table class="table table-dark table-striped container">
+            <thead>
+                <tr>
+                    <th scope="col">Meal Name</th>
+                    <th scope="col">Meal Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Hostel</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in apppost %}
+                <tr>
+                    <td>{{i.Food_Name}}</td>
+                    <td>{{i.Price}}</td>
+                    <td>{{i.Quantity}}</td>
+                    <td>{{i.Date_Time}}</td>
+                    <td>{{i.Hostel}}</td>
+                </tr>
+                
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'panelhead' %}"><button align="center" type="button" class="btn btn-success">Back TO Meal List</button></a>
+    </div>
+{% endblock  %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+<div class="container col-lg-5 mt-3 pb-3 border border-#999 fcolor">
+	<h1 class="h2 mt-3 mb-3 fcolor" align="center" style="color:green;">Update Profile</h1>
+	<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+		{{userfrom.as_p}}
+        {{profrom.as_p}}
+		<button type="submit" class="btn btn-success w-100">Update</button>
+	</form>
+</div>
+{% endblock  %}

@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"></script>
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+    <!--<div class="searce">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form method="POST" action="{% url 'mealsearch' %}" class="d-flex">
+                {% csrf_token %}
+                <input name="findman" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+        </nav>
+    </div>-->
+<div id="content" class="container">
+<div class="container" id="tbl_exporttable_to_xls">
+    <table class="tablemobilewidth table table-dark table-striped container mt-3" style=" width:50%">
+            <thead align="center">
+            <tr>
+            <th scope="col">Hostel 1</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="table-info" align="center">
+                    <td>Breakfast</td>
+                </tr>
+                {% for i in count1 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Lunch</td>
+                </tr>
+                {% for i in lcount1 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Dinner</td>
+                </tr>
+                {% for i in dcount1 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <table class="tablemobilewidth table table-dark table-striped container mt-3" style=" width:50%">
+            <thead align="center">
+            <tr>
+            <th scope="col">Hostel 2</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="table-info" align="center">
+                    <td>Breakfast</td>
+                </tr>
+                {% for i in count2 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Lunch</td>
+                </tr>
+                {% for i in lcount2 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Dinner</td>
+                </tr>
+                {% for i in dcount2 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <table class="tablemobilewidth table table-dark table-striped container mt-3" style=" width:50%">
+            <thead align="center">
+            <tr>
+            <th scope="col">Hostel 3</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-info" align="center">
+                    <td>Breakfast</td>
+                </tr>
+                {% for i in count3 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Lunch</td>
+                </tr>
+                {% for i in lcount3 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Dinner</td>
+                </tr>
+                {% for i in dcount3 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <table class="tablemobilewidth table table-dark table-striped container mt-3" style=" width:50%">
+            <thead align="center">
+            <tr>
+            <th scope="col">Hostel 4</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-info" align="center">
+                    <td>Breakfast</td>
+                </tr>
+                {% for i in count4 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Lunch</td>
+                </tr>
+                {% for i in lcount4 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Dinner</td>
+                </tr>
+                {% for i in dcount4 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <table class="tablemobilewidth table table-dark table-striped container mt-3" style=" width:50%">
+            <thead align="center">
+            <tr>
+            <th scope="col">Hostel 5</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-info" align="center">
+                    <td>Breakfast</td>
+                </tr>
+                {% for i in count5 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Lunch</td>
+                </tr>
+                {% for i in lcount5 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Dinner</td>
+                </tr>
+                {% for i in dcount5 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <table class="tablemobilewidth table table-dark table-striped container mt-3" style=" width:50%">
+            <thead align="center">
+            <tr>
+            <th scope="col">Hostel 6</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-info" align="center">
+                    <td>Breakfast</td>
+                </tr>
+                {% for i in count6 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Lunch</td>
+                </tr>
+                {% for i in lcount6 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Dinner</td>
+                </tr>
+                {% for i in dcount6 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <table class="tablemobilewidth table table-dark table-striped container mt-3" style=" width:50%">
+            <thead align="center">
+            <tr>
+            <th scope="col">Hostel 7</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-info" align="center">
+                    <td>Breakfast</td>
+                </tr>
+                {% for i in count7 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Lunch</td>
+                </tr>
+                {% for i in lcount7 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-info" align="center">
+                    <td>Dinner</td>
+                </tr>
+                {% for i in dcount7 %}
+                <tr>
+                <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+</div>
+</div><div id="page" align='center'></div>
+<div align="center">
+    <button class="btn btn-success" id="submit" class="pdfbutton">Export to  PDF</button>
+    <button class="btn btn-success" onclick="ExportToExcel('xlsx')">Export TO Excel</button>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script>
+    var doc = new jsPDF(); 
+    var specialElementHandlers = { 
+        '#editor': function (element, renderer) { 
+            return true; 
+        } 
+    };
+    $('#submit').click(function () { 
+        doc.fromHTML($('#content').html(), 15, 15, { 
+            'width': 500, 
+                'elementHandlers': specialElementHandlers 
+        }); 
+        doc.save('Student_Details.pdf'); 
+    });
+    </script>
+    
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script>
+    function ExportToExcel(type, fn, dl) {
+       var elt = document.getElementById('tbl_exporttable_to_xls');
+       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+       return dl ?
+         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+         XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+    }
+    </script>
+{% endblock  %}

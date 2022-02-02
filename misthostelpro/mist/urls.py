@@ -1,0 +1,31 @@
+from django.contrib import admin
+from django.urls import path
+from . import views
+urlpatterns = [
+    path('', views.index,name="home"),
+    path('login/', views.login,name="login"),
+    path('logout/', views.logout,name="logout"),
+    path('panelhead/', views.panelhed,name="panelhead"),
+    path('mealsheet/<int:id>', views.mealsheet,name="mealsheet"),
+    path('confirm/<int:id>/',views.confirm,name="confirm"),
+    path('confirmlunch/<int:id>/',views.confirmlunch,name="confirmlunch"),
+    path('confirmdener/<int:id>/',views.confirmdener,name="confirmdener"),
+    path('profile/',views.profile,name="profile"),
+    path('updateprofile',views.updateprofile,name="updateprofile" ),
+    path('singup/', views.singup,name="singup"),
+    path('mealorder/', views.mealorder,name="mealorder"),
+    path('delete/<int:id>/',views.delete,name="delete" ),
+    path('mealhiostry/', views.mealhiostry,name="mealhiostry"),
+    path('hostelmealsearch/', views.hostelmealsearch,name="hostelmealsearch"),
+    path('mealsearch/', views.mealsearch,name="mealsearch"),
+    path('notice/', views.notice,name="notice"),
+    path('billnotice/', views.billnotice,name="billnotice"),
+    path('setting/', views.setting,name="setting"),
+    path('makepayment/', views.makepayment,name="makepayment"),
+    path('paymenthistory/', views.paymenthistory,name="paymenthistory"),
+    path('Alluser/', views.Alluser,name="Alluser"),
+    path('Usersearch/', views.Usersearch,name="Usersearch"),
+    path('user/<int:id>/', views.student,name="studentlist"),
+    #path('hostelin/', views.hostelin,name="hostelin"),
+    path('fine/', views.fine,name="fine"),
+]

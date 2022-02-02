@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+    <table class="table table-dark table-striped container mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Meal Name</th>
+                    <th scope="col">Meal ID</th>
+                    <th scope="col">Meal Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in find %}
+                <tr>
+                    <th scope="row">{{i.Name}}</th>
+                    <td>{{i.Food_Name}}</td>
+                    <td>{{i.id}}</td>
+                    <td>{{i.Price}}</td>
+                    <td>{{i.Quantity}}</td>
+                    <td>{{i.Date_Time}}</td>
+                    <td>
+                      <form class="d-inline" action="{% url 'delete' i.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success" ><ion-icon name="checkbox-outline"></ion-icon></a></button>
+                    </form>
+                    </td>
+                    
+                </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+    <div class="container">
+    <a href="{% url 'panelhead' %}"><button type="button" class="btn btn-success">Back TO Meal List</button></a>
+    <div>
+{% endblock  %}

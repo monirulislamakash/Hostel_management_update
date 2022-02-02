@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+
+{% if titel != '' %}
+    <a href="{% url 'notice' %}">
+        <marquee class="notice">
+            {{titel}}
+        </marquee>
+    </a>
+{% endif %}
+    <div class="Dashbord mt-3">
+        <a href="{% url 'profile' %}"><img src="{{request.user.Image.url}}" class="profile_Pic"></a>
+        <h4 align="center">{{request.user.first_name}} {{request.user.last_name}}</h4>
+        <h4 align="center">BDT :{{request.user.MealBill}} TK</h4>
+        <h4 align="center">Hostel NO:{{request.user.Hostel}}</h4>
+
+        <table class="table table-secondary table-striped desh_pro_pc" style="margin-bottom:0px;">
+        <tr>
+            <td><h6 class="num">Room Number </h6></td>
+            <td>: {{request.user.Room_Number}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Bed Number </h6></td>
+            <td>: {{request.user.Bed_Number}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Number </h6></td>
+            <td> : {{request.user.Numer}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Class Roll </h6></td>
+            <td>: {{request.user.Class_Roll}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Father name </h6></td>
+            <td>: {{request.user.Father_name}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Blood Group </h6></td>
+            <td>: {{request.user.Blood_Group}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Address </h6></td>
+            <td>: {{request.user.Address}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Parents Number </h6></td>
+            <td>: {{request.user.Parents_number}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Date of Barth </h6></td>
+            <td>: {{request.user.Date_of_Birth}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Gender </h6></td>
+            <td>: {{request.user.Gender}}</td>
+        </tr>
+        <tr>
+            <td><h6 class="num">Em_Gauedion_Numer </h6></td>
+            <td>: {{request.user.Emediate_Gauedion_Numer}}</td>
+        </tr>
+    </table>
+    </diV>
+
+
+
+
+
+
+    <div class="Profile_def accordion accordion-flush" id="accordionFlushExample" align="center">
+    <div class="accordion-item" align="center">
+        <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" align="center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="color:#fff; background:#066706;">
+            Profile Details
+        </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+
+            <table class="table table-secondary table-striped" style="margin-bottom:0px;">
+                <tr>
+                    <td><h6 class="num">Room Number </h6></td>
+                    <td>: {{request.user.Room_Number}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Bed Number </h6></td>
+                    <td>: {{request.user.Bed_Number}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Number </h6></td>
+                    <td> : {{request.user.Numer}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Class Roll </h6></td>
+                    <td>: {{request.user.Class_Roll}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Father name </h6></td>
+                    <td>: {{request.user.Father_name}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Blood Group </h6></td>
+                    <td>: {{request.user.Blood_Group}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Address </h6></td>
+                    <td>: {{request.user.Address}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Parents Number </h6></td>
+                    <td>: {{request.user.Parents_number}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Date of Barth </h6></td>
+                    <td>: {{request.user.Date_of_Birth}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Gender </h6></td>
+                    <td>: {{request.user.Gender}}</td>
+                </tr>
+                <tr>
+                    <td><h6 class="num">Em_Gauedion_Numer </h6></td>
+                    <td>: {{request.user.Emediate_Gauedion_Numer}}</td>
+                </tr>
+            </table>
+
+
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="todaymeal">
+    <h4 align="center">Meals of ({{date}})</h4>
+        <table class="mealtable table table-dark table-striped" style="margin-bottom:0px; margin-top:0px;">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">QT.</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in todyfood %}
+                <tr>
+                    <td>{{i.Food_Name}}</td>
+                    <td>{{i.When}}</td>
+                    <td>{{i.Price}}</td>
+                    <td>{{i.Quantity}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    
+    <div class="mul_meal">
+    <h3 align="center">Available Items Today</h3>
+    <div class="alert alert-primary mel_head" role="alert">
+        <h5 align="center">Breakfast</h5>
+    </div>
+            <table class="mealtable table table-dark table-striped" style="margin-bottom:0px; margin-top:0px;">
+            <thead>
+                <tr>
+                    <th scope="col">Meal Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">available</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Order</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in morning %}
+                <tr>
+                <form method="POST" action="{% url 'confirm' i.id %}">
+                {% csrf_token %}
+                    <th scope="row"value="{{i.Name}}"><input style="display:none;" name="name" value='{{i.Name}}'>{{i.Name}}</th>
+                    <td value="{{i.Price}}"><input style="display:none;" name="price" value='{{i.Price}}'>{{i.Price}}</td>
+                    <td>{{i.Available}}</td>
+                    <td><input type="number" name="qun" style="width:51px;" value="1"></td>
+                    <td>
+                    <input style="display:none;" name="when" value='Breakfast'>
+                    {% if  i.Available > "0" %}
+                    
+                        <div class="form-check form-switch">
+                            <button type="submit" class="btn btn-success"><ion-icon name="bag-check-outline"></ion-icon></button>
+                        </div>
+                    
+                    {% endif %}
+                    </td>
+                </form>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+    <div class="alert alert-primary mel_head" role="alert">
+        <h5 align="center">Lunch</h5>
+    </div>
+            <table class="mealtable table table-dark table-striped" style="margin-bottom:0px; margin-top:0px;">
+            <thead>
+                <tr>
+                    <th scope="col">Meal Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">available</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Order</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in afternoon %}
+               <tr>
+                <form method="POST" action="{% url 'confirmlunch' i.id %}">
+                {% csrf_token %}
+                    <th scope="row"value="{{i.Name}}"><input style="display:none;" name="name" value='{{i.Name}}'>{{i.Name}}</th>
+                    <td value="{{i.Price}}"><input style="display:none;" name="price" value='{{i.Price}}'>{{i.Price}}</td>
+                    <td>{{i.Available}}</td>
+                    <td><input type="number" name="qun" style="width:51px;" value="1"></td>
+                    <td>
+                    <input style="display:none;" name="when" value='Lunch'>
+                    {% if  i.Available > "0" %}
+                    
+                        <div class="form-check form-switch">
+                            <button type="submit" class="btn btn-success"><ion-icon name="bag-check-outline"></ion-icon></button>
+                        </div>
+                    
+                    {% endif %}
+                    </td>
+                </form>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+    <div class="alert alert-primary mel_head" role="alert">
+        <h5 align="center">Dinner</h5>
+    </div>
+        
+            <table class="mealtable table table-dark table-striped" style="margin-bottom:0px; margin-top:0px;">
+            <thead>
+                <tr>
+                    <th scope="col">Meal Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">available</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Order</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in denar %}
+                <tr>
+                <form method="POST" action="{% url 'confirmdener' i.id %}">
+                {% csrf_token %}
+                    <th scope="row"value="{{i.Name}}"><input style="display:none;" name="name" value='{{i.Name}}'>{{i.Name}}</th>
+                    <td value="{{i.Price}}"><input style="display:none;" name="price" value='{{i.Price}}'>{{i.Price}}</td>
+                    <td>{{i.Available}}</td>
+                    <td><input type="number" name="qun" style="width:51px;" value="1"></td>
+                    <td>
+                    <input style="display:none;" name="when" value='Dinner'>
+                    {% if  i.Available > "0" %}
+                    
+                        <div class="form-check form-switch">
+                            <button type="submit" class="btn btn-success"><ion-icon name="bag-check-outline"></ion-icon></button>
+                        </div>
+                    
+                    {% endif %}
+                    </td>
+                </form>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+    </div>
+    
+{% endblock %}

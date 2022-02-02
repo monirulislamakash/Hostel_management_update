@@ -1,0 +1,206 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>{% block title %}Hello{% endblock  %}</title>
+
+    {% block head %}
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    {% endblock  %}
+  </head>
+  <body>
+    
+    {% if request.user.is_authenticated %}
+        {% if  request.user.is_superuser %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark menu" style="color:#fff;">
+        <div class="container">
+            <a class="navbar-brand lgo fcolor fs" href="{% url 'home' %}"><img src="{% static 'logo/logo.png' %}">Mangrove Hostel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'panelhead' %}">Meal Manager</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Meal Sheet
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 1 %}">Hostel 1</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 2 %}">Hostel 2</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 3 %}">Hostel 3</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 4 %}">Hostel 4</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 5 %}">Hostel 5</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 6 %}">Hostel 6</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 7 %}">Hostel 7</a></li>
+                    
+                </ul>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    User Area
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'makepayment' %}">Payment</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Usersearch' %}">Students</a></li>
+                    <li><a class="dropdown-item" href="{% url 'singup' %}">Add User</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    
+                </ul>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+        {% elif request.user.is_staff %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark menu" style="color:#fff;">
+        <div class="container">
+            <a class="navbar-brand lgo fcolor fs" href="{% url 'home' %}"><img src="{% static 'logo/logo.png' %}">Mangrove Hostel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'mealhiostry' %}">Meal History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'paymenthistory' %}">Payment History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'panelhead' %}">Meal Manager</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Meal Sheet
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 1 %}">Hostel 1</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 2 %}">Hostel 2</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 3 %}">Hostel 3</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 4 %}">Hostel 4</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 5 %}">Hostel 5</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 6 %}">Hostel 6</a></li>
+                    <li><a class="dropdown-item" href="{% url 'mealsheet' 7 %}">Hostel 7</a></li>
+                    
+                </ul>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    User Area
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'setting' %}">setting</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+        {% elif  request.user.hostel_incharje is True %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark menu" style="color:#fff;">
+        <div class="container">
+            <a class="navbar-brand lgo fcolor fs" href="{% url 'home' %}"><img src="{% static 'logo/logo.png' %}">Mangrove Hostel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'mealhiostry' %}">Meal History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'paymenthistory' %}">Payment History</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    User Area
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Usersearch' %}">Students</a></li>
+                    <li><a class="dropdown-item" href="{% url 'setting' %}">setting</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    
+                </ul>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+        {% else %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark menu" style="color:#fff;">
+        <div class="container">
+            <a class="navbar-brand lgo fcolor fs" href="{% url 'home' %}"><img src="{% static 'logo/logo.png' %}">Mangrove Hostel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'mealhiostry' %}">Meal History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'paymenthistory' %}">Payment History</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    User Area
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'setting' %}">setting</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    
+                </ul>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+        {% endif %}
+    {% endif %}
+
+
+
+
+    {% block body %}{% endblock %}
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

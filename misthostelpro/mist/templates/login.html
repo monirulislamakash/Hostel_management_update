@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+<h5 align='center' style="color:green; margin-top:20px;"><img src="{% static 'logo/logo.png' %}" width="32">Mangrove Smart Hostel</h5>
+<div class="container col-lg-5 mt-3 fcolor login">
+{% if error %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{error}}</strong> You should check.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+  <main class="form-signin">
+    <form method="POST">
+    {% csrf_token %}
+      <h1 class="h2 mt-3 mb-3" align="center" style="color:green;">Login</h1>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input name="email" type="text" placeholder="Enter Your Username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Please never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Password</label>
+        <input name="password" type="password" placeholder="Enter Your Password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Please never share your Password with anyone else.</div>
+      </div>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-info" type="submit" style="background:#066706; color:#fff;">Login</button>
+      <p class="mt-5 mb-3 text-muted">© Mangrove Instute</p>
+    </form>
+  </main>
+</div>
+{% endblock  %}

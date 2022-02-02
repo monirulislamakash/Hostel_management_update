@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+   <div class="container mt-3" align="center">
+    <h3 align="center">All Of My Payment</h3>
+        <table class="table table-dark table-striped container" align="center">
+            <thead align="center">
+                <tr>
+                    <th scope="col">Fixed</th>
+                    <th scope="col">Food</th>
+                    <th scope="col">pledge</th>
+                    <th scope="col">Development</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Receiver</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody align="center">
+            {% for i in payhistory %}
+                <tr>
+                    <td>{{i.Fixed}}</td>
+                    <td>{{i.Food}}</td>
+                    <td>{{i.Pledge}}</td>
+                    <td>{{i.Development}}</td>
+                    <td>{{i.Amount}}</td>
+                    <td>{{i.Receiver}}</td>
+                    <td>{{i.Date}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock  %}

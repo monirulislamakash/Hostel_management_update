@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+<div class="container col-lg-5 mt-3 pb-3 border border-#999 fcolor">
+{% if error %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{error}}</strong> You should check.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+{% if success %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{success}}</strong> You should check by <a href="{% url 'login' %}">Login</a>.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+  <main class="form-signin">
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+      <h1 class="h2 mt-3 mb-3 fcolor" align="center" style="color:green;">Register</h1>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <input name="f_name" type="text" placeholder="Entar Your First Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">Last Name</label>
+        <input name="l_name" type="text" placeholder="Entar Your Last Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">User Name</label>
+        <input name="email" type="text" placeholder="Entar Your User Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">Password</label>
+        <input name="password" type="password" placeholder="Entar Your Password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your Password with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
+        <input name="confirmpassword" type="password" placeholder="Confirm Password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your Password with anyone else.</div>
+      </div>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">Number</label>
+        <input name="bio" type="text" placeholder="Entar Your Number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Write your Number</div>
+      </div>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">Hostel No</label>
+        <input name="hostel" type="text" placeholder="Entar Your Number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Write your Hostel Number</div>
+      </div>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">Room No</label>
+        <input name="room" type="text" placeholder="Entar Your Number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Write your Room Number</div>
+      </div>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-info" type="submit" style="background:#066706; color:#fff;">Joine Us</button>
+    </form>
+  </main>
+</div>
+{% endblock  %}
